@@ -87,10 +87,10 @@ int *solucao(struct entrada *entradas, int n, int h)
     	l[i].id = entradas[i].usuario_id;
     }
 
-    quick_sort(l,0,h-1);
+    quick_sort(l,0,n-1);
 
     int j = 0;
-    for (int k = 0; k < n; k++)
+    for (int k = 0; k < h; k++)
     {
         if(l[k].inv < l[k+1].inv)
             {
