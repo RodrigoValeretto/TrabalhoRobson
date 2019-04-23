@@ -12,6 +12,50 @@ struct AUX
 	int id;
 };
 
+void quick_sort(struct AUX *l, int ini, int fim) {
+    int i=ini, j;
+    struct AUX aux;
+    // particionamento de Loreto (pivo = l->vet[fim])
+    for (j=ini; j<fim; j++)
+        if (l[j].inv < l[fim].inv) {
+            // troca l->vet[i] por l->vet[j]
+            aux = l[i];
+            l[i] = l[j];
+            l[j] = aux;
+            i++; // mais um elemento menor do que o pivo
+        }
+    aux = l[fim];
+    l[fim] = l[i];
+    l[i] = aux;
+    if (ini < i-1)
+        quick_sort(l, ini, i-1); // processa metade inferior
+    if (i+1 < fim)
+        quick_sort(l, i+1, fim); // processa metade superior
+    return;
+}
+
+void quick_sort_id(struct AUX *l, int ini, int fim) {
+    int i=ini, j;
+    struct AUX aux;
+    // particionamento de Loreto (pivo = l->vet[fim])
+    for (j=ini; j<fim; j++)
+        if (l[j].id < l[fim].id) {
+            // troca l->vet[i] por l->vet[j]
+            aux = l[i];
+            l[i] = l[j];
+            l[j] = aux;
+            i++; // mais um elemento menor do que o pivo
+        }
+    aux = l[fim];
+    l[fim] = l[i];
+    l[i] = aux;
+    if (ini < i-1)
+        quick_sort_id(l, ini, i-1); // processa metade inferior
+    if (i+1 < fim)
+        quick_sort_id(l, i+1, fim); // processa metade superior
+    return;
+}
+
 
 int bubble_sort(struct entrada *l, int h) {
     int i, cont = 0, iteracao = 0, ordenado = 0;
@@ -41,6 +85,19 @@ int *solucao(struct entrada *entradas, int n, int h)
     {
     	l[i].inv = bubble_sort(&entradas[i], h);
     	l[i].id = entradas[i].usuario_id;
+    }
+
+    quick_sort(l,0,h-1);
+
+    int j = 0;
+    for (int k = 0; k < n; k++)
+    {
+        if(l[k].inv < l[k+1].inv)
+            {
+                quick_sort_id(l,j,k);
+                j=k+1;
+            }
+
     }
 
 	for(int i = 0; i<n ; i++)
