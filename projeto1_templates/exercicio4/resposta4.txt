@@ -1,0 +1,5 @@
+Caso 1, item 11 na posicao 1.
+Caso 1, item 31 na posicao 4.
+Caso 2, item 3 na posicao 0.
+Caso 2, item 22 nao existe.
+Caso 2, item 6 na posicao 1.
