@@ -46,28 +46,6 @@ void quick_sort_vol(struct Aux *l, int ini, int fim) {
     return;
 }
 
-void quick_sort_id(struct Aux *l, int ini, int fim) {
-    int i=ini, j;
-    struct Aux aux;
-    // particionamento de Loreto (pivo = l->vet[fim])
-    for (j=fim; j>ini; j--)
-        if (l[j].id > l[ini].id) {
-            // troca l->vet[i] por l->vet[j]
-            aux = l[i];
-            l[i] = l[j];
-            l[j] = aux;
-            i++; // mais um elemento menor do que o pivo
-        }
-    aux = l[fim];
-    l[fim] = l[i];
-    l[i] = aux;
-    if (ini < i-1)
-        quick_sort_id(l, ini, i-1); // processa metade inferior
-    if (i+1 < fim)
-        quick_sort_id(l, i+1, fim); // processa metade superior
-    return;
-}
-
 int* solucao(struct entrada *entradas, int n, int p)
 {
     int *ret = (int *) malloc(p * sizeof(int));
@@ -82,18 +60,6 @@ int* solucao(struct entrada *entradas, int n, int p)
 
     quick_sort_vol(l,0,n-1);
 
-/*   int i = 0;
-    for (k = 0; k < n; k++)
-    {
-        if(l[k].vol < l[k+1].vol)
-            {
-                quick_sort_id(l,i,k);
-                i=k+1;
-            }
-
-    }
-
-*/
     for(int x=0,k = n-1 ; k > n-1-p ; k--,x++)
         ret[x] = l[k].id;
 
