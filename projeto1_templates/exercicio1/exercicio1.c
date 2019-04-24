@@ -23,6 +23,19 @@ void quick_sort_vol(struct Aux *l, int ini, int fim) {
             l[j] = aux;
             i++; // mais um elemento menor do que o pivo
         }
+        else
+        {
+            if(l[j].vol == l[fim].vol)
+            {
+                if(l[j].id > l[fim].id)
+                {
+                    aux = l[i];
+                    l[i] = l[j];
+                    l[j] = aux;
+                    i++;
+                }
+            }
+        }
     aux = l[fim];
     l[fim] = l[i];
     l[i] = aux;
@@ -69,7 +82,7 @@ int* solucao(struct entrada *entradas, int n, int p)
 
     quick_sort_vol(l,0,n-1);
 
-    int i = 0;
+/*   int i = 0;
     for (k = 0; k < n; k++)
     {
         if(l[k].vol < l[k+1].vol)
@@ -80,7 +93,7 @@ int* solucao(struct entrada *entradas, int n, int p)
 
     }
 
-
+*/
     for(int x=0,k = n-1 ; k > n-1-p ; k--,x++)
         ret[x] = l[k].id;
 
