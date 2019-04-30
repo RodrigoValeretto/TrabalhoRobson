@@ -41,7 +41,10 @@ int buscabinaria(struct entrada l, int ini, int fim, int x)
 		int meio = (ini + fim)/2;
 
 		if (l.itens[meio] == x)
-			return meio;
+			if(l.itens[meio - 1] == x && (meio-1 >= 0))
+				return buscabinaria(l, 0, meio - 1, x);
+			else
+				return meio;
 		
 		if(l.itens[meio] > x)
 			return buscabinaria(l, 0, meio - 1, x);
