@@ -18,14 +18,14 @@ int merge_sort_recursivo(int *l, int ini, int fim) {
     while ( l1 <= meio && l2 <= fim)
         //aux[lc++] = (l[l1] < l[l2]) ? l[l1++] : l[l2++];
         {
-        	if (l[l1] < l[l2]) {
+        	if (l[l1] <= l[l2]) {
                 aux[lc] = l[l1];
                 l1++;
             } else {
                 aux[lc] = l[l2];
                 l2++;
-                if(!(l[l1] == l[l2]))
-                	cont ++;
+
+                cont += meio - l1 + 1;
             }
             lc++;
         }
@@ -46,9 +46,6 @@ int solucao(int *arr, int n)
 {
 
 	int ret = merge_sort_recursivo(arr, 0 , n-1);
-
- 	for(int i = 0; i < n;i++)
- 		printf("Indice %d -- Valor %d\n", i, arr[i]);
 
     return ret;
 }
