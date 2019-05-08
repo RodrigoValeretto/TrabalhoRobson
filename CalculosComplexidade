@@ -1,0 +1,50 @@
+Exc 3:
+
+Quick Sort:
+T(n) = 1 + n+1 + n + n*11 + 6 + T(n-1)
+
+T(n) = 8 + 13n + n*(n-2) = n² + 11n + 8 Pior caso
+
+T(n) = 1 + n+1 + n + n*11 + 6 + 2T(n/2) 
+
+T(n) = n*log(n) + 13n + 8
+
+Solução:
+
+F(n) = 1 + 2 + 1 + 1 + n*(n-1)/2 + 1 + n*(n-1)/2 + 12 + 9 + 1 + n + n+1 + 2 + T(n) + 1 + n+1 + n + n
+
+F(n) = 33 + 4n + 2n² + T(n)
+
+Exc 5:
+
+Merge Sort:
+T(n) = 1 + 1 + 1 + 3 + 2 + T(n/2) + 2 + T(n/2) + 2 + 2 + n+2 + (n/2)*(6) + n/2 + n/2 +1 + n + n/2 +1 + n + n + n+1 + 1 + n + n + 1
+
+T(n) = 21 + 2T(n/2) + 11,5n
+
+T(n) = n*log(n) + 11,5n + 21
+
+Solução:
+2 + T(n)
+
+Exc 4:
+Merge Sort:
+T(n) = 1 + 4 + 2T(n/2) + 2 + 2 + n + 2 + 3(n/2) + n/2 + 1 + n + n/2 + n/2 + 1 + n + n/2 + n + 1
+
+T(n) = n*log(n) + 7,5n + 14
+
+Busca Binaria:
+
+B(n) = 1 + 3 + 1 + 1 + 2 + T(n/2) + 1 + 1
+
+B(n) = 10 + T(n/2)
+
+B(n) = 10 + log(n) 
+
+Soluções:
+
+F(n) = 1 + T(n) + 1 + n+1 + n + n + n*B(n) + 1
+
+F(n) = 4 + 3n + T(n) + n*B(n)
+
+
